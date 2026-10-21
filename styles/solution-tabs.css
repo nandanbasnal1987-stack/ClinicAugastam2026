@@ -1,0 +1,490 @@
+/* ==========================================================================
+       1. DESIGN TOKENS & GLOBAL RESET
+       ========================================================================== */
+#section-5{
+      /* Core palette – light theme */
+      --bg: #f4f8fc;         /* page background */
+      --ink: #060d26;        /* headings */
+      --text: #10162b;       /* body copy */
+      --line: #dfe6ee;       /* vertical grid lines */
+      --pill: #e6f0f3;       /* badge background */
+      --blue: #0074c0;       /* primary action blue */
+
+      /* Tab colours */
+      --tab-off: #94a6b8;
+      --tab-on: #0b6cb8;
+      --tab-bg1: #e3effb;
+      --tab-bg2: #cfe3f5;
+
+      /* Card gradient */
+      --a: #ffffff;
+      --b: #d8e2fc;
+      --cbd: #d6dff0;        /* card border */
+
+      /* UI surfaces */
+      --frame: #e8edfc;
+      --white: #fff;
+      --pink: #fde6fb;
+      --pink2: #f8c9f2;
+      --grey: #5b6478;
+
+      /* Safe-area handling for notched devices */
+      box-sizing: border-box;
+      
+      
+    }
+/* Dark mode – only applies when user has NOT explicitly chosen light theme */
+@media (prefers-color-scheme: dark){html:not([data-theme="light"]) #section-5{
+        --bg: #0b121c;
+        --ink: #f2f6fb;
+        --text: #e6ebf6;
+        --line: #1f2b3a;
+        --pill: #162330;
+        --blue: #2a93e0;
+        --tab-off: #6f819a;
+        --tab-on: #7cc3ff;
+        --tab-bg1: #1a2d46;
+        --tab-bg2: #16273d;
+        --a: #121b28;
+        --b: #1e2f5c;
+        --cbd: #2b3a5a;
+        --frame: #1c2a4d;
+        --white: #131d30;
+        --pink: #3a2442;
+        --pink2: #5b3466;
+        --grey: #a3adc0;
+      }
+}
+html[data-theme="dark"] #section-5{
+        --bg: #0b121c;
+        --ink: #f2f6fb;
+        --text: #e6ebf6;
+        --line: #1f2b3a;
+        --pill: #162330;
+        --blue: #2a93e0;
+        --tab-off: #6f819a;
+        --tab-on: #7cc3ff;
+        --tab-bg1: #1a2d46;
+        --tab-bg2: #16273d;
+        --a: #121b28;
+        --b: #1e2f5c;
+        --cbd: #2b3a5a;
+        --frame: #1c2a4d;
+        --white: #131d30;
+        --pink: #3a2442;
+        --pink2: #5b3466;
+        --grey: #a3adc0;
+      ;color-scheme:dark}
+#section-5 *{
+      box-sizing: border-box;
+    }
+#section-5{
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Lato, system-ui, sans-serif;
+      /* Vertical grid lines at 25.5 %, 50 %, 74.5 % */
+      background-image: linear-gradient(
+        90deg,
+        transparent calc(25.5% - .5px), var(--line) 25.5%, transparent calc(25.5% + .5px),
+        transparent calc(50% - .5px),   var(--line) 50%,   transparent calc(50% + .5px),
+        transparent calc(74.5% - .5px), var(--line) 74.5%, transparent calc(74.5% + .5px)
+      );
+    }
+/* ==========================================================================
+       2. SECTION SHELL
+       ========================================================================== */
+#section-5 .sec{
+      padding: 107px 24px 56px;
+      text-align: center;
+      min-height: 1133px;
+    }
+/* ----- Badge ----- */
+#section-5 .pill{
+      display: inline-block;
+      background: var(--pill);
+      padding: 11px 14px;
+      border-radius: 30px;
+      font: 700 11px Poppins, sans-serif;
+      letter-spacing: 1.5px;
+      transition: transform .3s;
+    }
+#section-5 .pill:hover{
+      transform: scale(1.08);
+    }
+/* ----- Main heading ----- */
+#section-5 h1{
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 400;
+      font-size: clamp(34px, 4.1vw, 58px);
+      line-height: 1.04;
+      letter-spacing: -.5px;
+      max-width: 900px;
+      margin: 36px auto 0;
+    }
+/* ==========================================================================
+       3. TABS
+       ========================================================================== */
+#section-5 .tabs{
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 19px;
+      max-width: 1049px;
+      margin: 66px auto 0;
+      height: 84px;
+    }
+/* Sliding indicator behind the active tab */
+#section-5 .ind{
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 84px;
+      width: calc((100% - 38px) / 3);
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--tab-bg1), var(--tab-bg2));
+      transition: translate .5s cubic-bezier(.2, .8, .2, 1);
+      box-shadow: 0 8px 20px rgba(60, 130, 200, .12);
+    }
+#section-5 .tab{
+      position: relative;
+      z-index: 1;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      font: 700 clamp(15px, 1.4vw, 20px) Arial, Helvetica, sans-serif;
+      letter-spacing: -.5px;
+      color: var(--tab-off);
+      transition: color .3s, transform .3s;
+      border-radius: 20px;
+    }
+#section-5 .tab:hover{
+      transform: translateY(-2px);
+      color: var(--tab-on);
+    }
+#section-5 .tab[aria-selected=true]{
+      color: var(--tab-on);
+    }
+#section-5 .tab:focus-visible{
+      outline: 2px solid var(--blue);
+    }
+/* ==========================================================================
+       4. CARD (holds all three panels)
+       ========================================================================== */
+#section-5 .card{
+      position: relative;
+      max-width: 1279px;
+      margin: 24px auto 0;
+      height: 607px;
+      border: 1px solid var(--cbd);
+      /* Organic asymmetric border-radius */
+      border-radius: 70px 100px 100px 100px / 70px 100px 100px 100px;
+      background: linear-gradient(90deg, var(--a) 10%, var(--b));
+      overflow: hidden;
+      text-align: left;
+    }
+/* ----- Panel base ----- */
+#section-5 .panel{
+      position: absolute;
+      inset: 0;
+      padding: 78px 65px;
+      opacity: 0;
+      visibility: hidden;
+      translate: 40px 0;
+      transition: opacity .5s, translate .5s, visibility 0s .5s;
+    }
+#section-5 .panel.on{
+      opacity: 1;
+      visibility: visible;
+      translate: 0 0;
+      transition: opacity .5s .1s, translate .5s .1s, visibility 0s;
+    }
+#section-5 .panel h2{
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 400;
+      font-size: clamp(34px, 4vw, 58px);
+      line-height: 1.04;
+      letter-spacing: -.3px;
+      max-width: 760px;
+      margin: 0;
+      color: var(--ink);
+    }
+/* ----- Feature list ----- */
+#section-5 ul{
+      list-style: none;
+      margin: 32px 0 0;
+      padding: 0;
+    }
+#section-5 li{
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      height: 40px;
+      margin-bottom: 16px;
+      font-size: 15px;
+      color: var(--text);
+      cursor: default;
+      transition: transform .3s;
+    }
+#section-5 li i{
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--pink);
+      flex: none;
+      transition: background .3s, transform .3s;
+    }
+#section-5 li:hover{
+      transform: translateX(8px);
+    }
+#section-5 li:hover i{
+      background: var(--pink2);
+      transform: rotate(-8deg);
+    }
+/* ----- "Try Now" button ----- */
+#section-5 .try{
+      margin-top: 36px;
+      height: 56px;
+      padding: 0 24px;
+      border: 0;
+      border-radius: 12px;
+      background: var(--blue);
+      color: #fff;
+      font: 700 16px Lato, sans-serif;
+      cursor: pointer;
+      transition: transform .25s, box-shadow .25s;
+    }
+#section-5 .try:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 12px 26px rgba(0, 116, 192, .35);
+    }
+/* ==========================================================================
+       5. RIGHT-SIDE DASHBOARD WIDGET
+       ========================================================================== */
+#section-5 .right{
+      position: absolute;
+      right: 87px;
+      top: 170px;
+      width: 459px;
+    }
+#section-5 .dr{
+      text-align: right;
+      font-weight: 700;
+      font-size: 26px;
+      color: var(--text);
+      margin: 0 4px 21px 0;
+    }
+/* ----- Rounded device frame ----- */
+#section-5 .frame{
+      background: var(--frame);
+      border-radius: 38px;
+      padding: 14px;
+      transition: transform .45s cubic-bezier(.2, .8, .2, 1), box-shadow .45s;
+    }
+#section-5 .frame:hover{
+      transform: translateY(-8px);
+      box-shadow: 0 24px 50px rgba(70, 100, 200, .22);
+    }
+#section-5 .inner{
+      background: var(--white);
+      border-radius: 28px;
+      height: 264px;
+      padding: 30px 20px 0;
+    }
+#section-5 .inner h4{
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+    }
+/* ==========================================================================
+       6. PANEL 1 – DONUT CHART
+       ========================================================================== */
+#section-5 .rev{
+      display: flex;
+      align-items: center;
+      gap: 52px;
+      margin-top: 30px;
+      padding-left: 22px;
+    }
+#section-5 .donut{
+      position: relative;
+      width: 128px;
+      height: 128px;
+      flex: none;
+    }
+#section-5 .donut svg{
+      width: 100%;
+      height: 100%;
+      rotate: 0deg;
+    }
+#section-5 .donut circle{
+      fill: none;
+      stroke-width: 18;
+      transition: stroke-width .3s, opacity .3s;
+    }
+#section-5 .donut .y{ stroke: #f0ab0d; }
+/* cash */
+#section-5 .donut .b{ stroke: #1f87ff; }
+/* online */
+/* Hover states – highlight the hovered slice */
+#section-5 .donut.hy .b, #section-5 .donut.hb .y{
+      opacity: .35;
+    }
+#section-5 .donut.hy .y, #section-5 .donut.hb .b{
+      stroke-width: 22;
+    }
+/* Centre label */
+#section-5 .mid{
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--ink);
+      line-height: 1.15;
+    }
+#section-5 .mid small{
+      display: block;
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--grey);
+    }
+/* ----- Legend ----- */
+#section-5 .leg > div{
+      cursor: pointer;
+      margin-bottom: 18px;
+    }
+#section-5 .leg b.l{
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 400;
+      font-size: 20px;
+      color: var(--text);
+    }
+#section-5 .leg b.l:before{
+      content: "";
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      background: var(--c);
+    }
+#section-5 .leg b.l strong{
+      font-weight: 900;
+    }
+#section-5 .leg p{
+      margin: 6px 0 0 25px;
+      font-size: 18px;
+      color: #5a6a85;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+#section-5 .dn{ color: #e0364a; }
+/* down arrow */
+#section-5 .up{ color: #1ea85a; }
+/* up arrow */
+#section-5 .leg > div:hover b.l{
+      transform: translateX(4px);
+    }
+#section-5 .leg b.l{
+      transition: transform .3s;
+    }
+/* ==========================================================================
+       7. PANEL 2 & 3 – PROGRESS BARS + COUNTER
+       ========================================================================== */
+#section-5 .bars{
+      margin-top: 24px;
+      padding: 0 22px;
+    }
+#section-5 .bar{
+      margin-bottom: 18px;
+    }
+#section-5 .bar div{
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+#section-5 .bar span{
+      display: block;
+      height: 10px;
+      border-radius: 6px;
+      background: var(--frame);
+      overflow: hidden;
+    }
+#section-5 .bar span i{
+      display: block;
+      height: 100%;
+      width: 0;
+      border-radius: 6px;
+      background: var(--c);
+      transition: width 1.2s cubic-bezier(.2, .8, .2, 1);
+    }
+/* Animate bar fills when the panel becomes active */
+#section-5 .panel.on .bar span i{
+      width: var(--w);
+    }
+/* Big animated counter number */
+#section-5 .big{
+      font-size: 34px;
+      font-weight: 900;
+      margin: 10px 22px 0;
+      color: var(--ink);
+    }
+/* ==========================================================================
+       8. RESPONSIVE & MOTION PREFERENCES
+       ========================================================================== */
+@media (max-width: 1000px){#section-5 .card{
+        height: auto;
+        border-radius: 44px;
+        min-height: 760px;
+      }
+#section-5 .panel{
+        padding: 44px 28px;
+        position: absolute;
+      }
+#section-5 .right{
+        position: absolute;
+        left: 24px;
+        right: 24px;
+        top: auto;
+        bottom: 30px;
+        width: auto;
+      }
+#section-5 .dr{
+        display: none;
+      }
+#section-5 .inner{
+        height: auto;
+        padding-bottom: 20px;
+      }
+#section-5 .rev{
+        gap: 24px;
+        padding-left: 0;
+      }
+#section-5 .tabs{
+        gap: 8px;
+      }
+#section-5 .card{
+        min-height: 900px;
+      }
+}
+@media (prefers-reduced-motion: reduce){#section-5 *{
+        transition: none !important;
+      }
+}
+
+
+@media screen and (max-width:480px) and (min-width:360px) {
+  #section-5 .donut{width: 100%;float: left;}
+  #section-5 .panel.on{width: 100%;
+    float: left;
+    /* left: 0px; */
+    position: absolute;
+    bottom: 18px;}
+}

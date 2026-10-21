@@ -1,0 +1,185 @@
+.section-1 .hero{
+      position: relative;
+      height: calc(100vh - 119px);
+      min-height: 760px;
+      overflow: hidden;
+      background: #6b4f38;
+      isolation: isolate;
+    }
+.section-1 .scene{
+      position: absolute;
+      inset: -30px;
+      z-index: -3;
+      transition: transform 0.5s ease-out;
+      animation: sec1-kb 24s ease-in-out infinite alternate;
+    }
+@keyframes sec1-kb{
+      to {
+        scale: 1.07;
+      }
+}
+.section-1 .scene svg{
+      width: 100%;
+      height: 100%;
+      filter: blur(1.5px);
+    }
+.section-1 .photo{
+      position: absolute;
+      inset: -30px;
+      z-index: -2;
+      background: var(--photo) center / cover no-repeat;
+      transition: transform 0.5s ease-out;
+    }
+.section-1 .shade{
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(90deg, rgba(35, 28, 22, 0.55), rgba(35, 28, 22, 0.18) 55%, rgba(0, 0, 0, 0)),
+                  linear-gradient(0deg, rgba(0, 0, 0, 0.35), transparent 35%);
+    }
+.section-1 .copy{
+      position: absolute;
+      left: 72px;
+      top: 176px;
+      width: min(760px, calc(100% - 144px));
+      color: #fff;
+    }
+.section-1 h1{
+      margin: 0;
+      font-weight: 400;
+      font-size: clamp(40px, 5.1vw, 74px);
+      line-height: 1.02;
+      letter-spacing: -0.5px;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
+    }
+.section-1 h1 em{
+      display: inline-block;
+      font-style: italic;
+      font-weight: 700;
+      background: linear-gradient(90deg, #1e90ff, #8a5cf0, #d63df0, #1e90ff);
+      background-size: 250% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: sec1-flow 6s linear infinite;
+      text-shadow: none;
+      padding-right: 0.1em;
+    }
+@keyframes sec1-flow{
+      to {
+        background-position: -250% 0;
+      }
+}
+.section-1 .lead{
+      margin: 36px 0 0;
+      font-size: clamp(17px, 1.55vw, 22px);
+      line-height: 1.42;
+      max-width: 760px;
+      color: rgba(255, 255, 255, 0.93);
+    }
+.section-1 .btns{
+      display: flex;
+      gap: 12px;
+      margin-top: 40px;
+    }
+.section-1 .b1{
+      height: 49px;
+      padding: 0 25px;
+      background: #5aa9e8;
+      border: 1px solid #7bbdf0;
+      color: #10203a;
+      font: 700 18px Arial;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+    }
+.section-1 .b1:hover{
+      transform: translateY(-3px);
+      background: #74b8ef;
+      box-shadow: 0 12px 26px rgba(90, 169, 232, 0.45);
+    }
+.section-1 .b2{
+      height: 49px;
+      padding: 0 24px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      color: #8cc8ff;
+      font: 18px Arial;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s, transform 0.25s;
+    }
+.section-1 .b2:hover{
+      background: #fff;
+      color: #0a4f8a;
+      transform: translateY(-3px);
+    }
+.section-1 .partners{
+      position: absolute;
+      left: 72px;
+      bottom: 46px;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      color: rgba(255, 255, 255, 0.72);
+    }
+.section-1 .partners > div{
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: opacity 0.3s, transform 0.3s;
+      opacity: 0.85;
+      cursor: default;
+    }
+.section-1 .partners > div:hover{
+      opacity: 1;
+      transform: translateY(-4px);
+    }
+.section-1 .partners svg{
+      height: 38px;
+      width: auto;
+    }
+.section-1 .nha{
+      font: 700 15px / 0.85 Poppins, sans-serif;
+      letter-spacing: -0.5px;
+    }
+.section-1 .hl7{
+      font: 400 20px Arial;
+      letter-spacing: -0.5px;
+    }
+.section-1 .in{
+      opacity: 0;
+      translate: 0 22px;
+      animation: sec1-up 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      animation-delay: calc(var(--d) * 130ms);
+    }
+@keyframes sec1-up{
+      to {
+        opacity: 1;
+        translate: 0 0;
+      }
+}
+@media (max-width: 700px){.section-1 .copy{
+        left: 20px;
+        top: 80px;
+        width: calc(100% - 40px);
+      }
+.section-1 .partners{
+        left: 20px;
+        gap: 18px;
+        transform-origin: left bottom;
+        scale: 0.75;
+      }
+.section-1 .btns{
+        flex-wrap: wrap;
+      }
+}
+@media (prefers-reduced-motion: reduce){.section-1 .in{
+        opacity: 1;
+        translate: 0 0;
+      }
+}
+
+@media screen and (max-width:480px) and (min-width:360px) {
+      .section-1 .hero{height: calc(100vh - 410px);min-height: 210px;}
+}

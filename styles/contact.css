@@ -1,0 +1,68 @@
+#section-12{
+  --bg:#f4f8fc; --ink:#101a33; --card:#fff; --line:#d3deec; --btn:#0072bc; --btnh:#005f9e; --field:#f4f8fc;
+  box-sizing:border-box;
+   
+}
+@media (prefers-color-scheme:dark){html:not([data-theme="light"]) #section-12{--bg:#0c1320;--ink:#eef3fb;--card:#151f33;--line:#2a3856;--field:#0c1320;color-scheme:dark}
+}
+html[data-theme="dark"] #section-12{--bg:#0c1320;--ink:#eef3fb;--card:#151f33;--line:#2a3856;--field:#0c1320;color-scheme:dark;color-scheme:dark}
+html[data-theme="dark"] #section-12{--bg:#0c1320;--ink:#eef3fb;--card:#151f33;--line:#2a3856;--field:#0c1320;color-scheme:dark}
+#section-12 *, #section-12 *::before, #section-12 *::after{box-sizing:inherit}
+#section-12{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);font-family:Poppins,system-ui,sans-serif;color:var(--ink)}
+#section-12 :focus-visible{outline:2px solid #fff;outline-offset:3px}
+#section-12 .cta{position:relative;width:calc(100% - 48px);max-width:1326px;min-height:469px;margin:48px auto;border-radius:48px;overflow:hidden;
+  color:#fff;display:flex;align-items:center;isolation:isolate;background:#3a2616}
+#section-12 .photo{position:absolute;inset:-20px;z-index:-2;transition:transform .9s cubic-bezier(.2,.7,.2,1);
+  background:var(--img,none) center/cover,
+   radial-gradient(18% 30% at 86% 38%,#f1d3b3,transparent 70%),
+   radial-gradient(22% 28% at 52% 52%,#d9b48b,transparent 70%),
+   radial-gradient(22% 30% at 22% 48%,#c99a72,transparent 72%),
+   radial-gradient(40% 50% at 15% 10%,#9db27f,transparent 70%),
+   linear-gradient(120deg,#7a5434,#4a3320 60%,#6b4a2c)}
+#section-12 .cta:hover .photo{transform:scale(1.05)}
+#section-12 .cta::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(25,15,8,.55),rgba(25,15,8,.18) 70%,rgba(25,15,8,0))}
+#section-12 .body{padding:56px 104px;max-width:900px}
+#section-12 h1{margin:0;font:700 clamp(32px,5vw,56px)/1.12 Inter,Arial,sans-serif;letter-spacing:-.005em;text-shadow:0 2px 16px rgba(0,0,0,.25)}
+#section-12 .lead{margin:32px 0 0;font-size:clamp(15px,1.8vw,18px);line-height:1.65;max-width:700px;letter-spacing:.01em}
+#section-12 .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:70px}
+#section-12 .btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;height:52px;padding:0 21px;border-radius:12px;border:0;
+  font:700 14px Inter,sans-serif;cursor:pointer;text-decoration:none;transition:transform .25s,box-shadow .25s,background .25s}
+#section-12 .btn.p{background:var(--btn);color:#fff}
+#section-12 .btn.s{background:#fff;color:#101a33;border:1px solid #d6dce8}
+#section-12 .btn:hover{transform:translateY(-3px);box-shadow:0 12px 24px -8px rgba(0,0,0,.5)}
+#section-12 .btn.p:hover{background:var(--btnh)}
+#section-12 .btn .ar{display:inline-block;transition:transform .25s}
+#section-12 .btn:hover .ar{transform:translateX(5px)}
+#section-12 .btn::before{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);
+  transform:skewX(-20deg);transition:left .6s}
+#section-12 .btn:hover::before{left:130%}
+#section-12 .btn:active{transform:translateY(0) scale(.98)}
+#section-12 dialog{border:0;border-radius:20px;padding:28px;width:min(400px,calc(100% - 32px));background:var(--card);color:var(--ink);
+  box-shadow:0 30px 70px -20px rgba(0,0,0,.5)}
+#section-12 dialog::backdrop{background:rgba(10,15,30,.55);backdrop-filter:blur(3px)}
+#section-12 dialog[open]{animation:sec12-pop .3s cubic-bezier(.3,1.4,.5,1)}
+@keyframes sec12-pop{from{opacity:0;transform:translateY(14px) scale(.96)}
+}
+#section-12 dialog h2{margin:0 0 6px;font:700 22px Inter,sans-serif}
+#section-12 dialog p{margin:0 0 18px;font-size:14px;opacity:.75}
+#section-12 dialog label{display:block;font:500 13px Inter,sans-serif;margin-bottom:12px}
+#section-12 dialog input{display:block;width:100%;margin-top:6px;height:44px;padding:0 12px;border:1px solid var(--line);border-radius:10px;
+  background:var(--field);color:var(--ink);font:400 15px Poppins,sans-serif}
+#section-12 dialog input:focus{outline:2px solid var(--btn);border-color:transparent}
+#section-12 dialog .row{display:flex;gap:10px;margin-top:18px}
+#section-12 dialog .btn{height:46px;flex:1;justify-content:center}
+#section-12 dialog .btn.s{background:transparent;color:var(--ink);border:1px solid var(--line)}
+#section-12 dialog :focus-visible{outline-color:var(--btn)}
+#section-12 .ok{display:none;text-align:center;padding:12px 0}
+#section-12 .ok b{display:block;font:700 20px Inter,sans-serif;margin:8px 0 4px}
+#section-12 dialog.done form{display:none}
+#section-12 dialog.done .ok{display:block}
+#section-12 #sec12-theme{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));font:500 13px Inter,sans-serif;
+  background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:9px 14px;cursor:pointer;opacity:.85}
+@media (max-width:760px){#section-12 .cta{width:calc(100% - 24px);border-radius:32px;min-height:440px;align-items:flex-end}
+#section-12 .cta::after{background:linear-gradient(0deg,rgba(25,15,8,.75),rgba(25,15,8,.2) 80%)}
+#section-12 .body{padding:40px 24px}
+#section-12 .btns{margin-top:36px}
+}
+@media (prefers-reduced-motion:reduce){#section-12 *, #section-12 *::before, #section-12 *::after{transition:none!important;animation:none!important}
+}

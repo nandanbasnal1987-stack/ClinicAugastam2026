@@ -1,0 +1,93 @@
+.section-1{display:contents}
+.section-1{
+      /* Hero background photo (replace `none` with url("...") to use a real image) */
+      --photo: none;
+      /* Navigation colours */
+      --nav: #fff;
+      --nav-ink: #1a2236;
+      /* Primary brand blue */
+      --blue: #0074c0;
+      /* Border colour */
+      --bd: #e6eaf0;
+
+      /* Safe-area handling for notched devices */
+      box-sizing: border-box;
+      
+      
+    }
+@media (prefers-color-scheme: dark){html:not([data-theme="light"]) .section-1{
+        --nav: #101722;
+        --nav-ink: #eef2f8;
+        --blue: #2a93e0;
+        --bd: #223044;
+      }
+}
+html[data-theme="dark"] .section-1{
+        --nav: #101722;
+        --nav-ink: #eef2f8;
+        --blue: #2a93e0;
+        --bd: #223044;
+      ;color-scheme:dark}
+.section-1 *{
+      box-sizing: border-box;
+    }
+.section-1{
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--nav);
+      overflow-x: hidden;
+    }
+.section-1 .bar{
+      position: relative;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(90deg, #55b8d8, #8d8fe2 55%, #a342e8);
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      overflow: hidden;
+      transition: height 0.4s, opacity 0.4s;
+    }
+.section-1 .bar.gone{
+      height: 0;
+      opacity: 0;
+    }
+.section-1 .bar a{
+      color: #fff;
+      transition: letter-spacing 0.3s;
+    }
+.section-1 .bar a:hover{
+      letter-spacing: 0.4px;
+    }
+.section-1 .bar button{
+      position: absolute;
+      right: 122px;
+      top: 50%;
+      translate: 0 -50%;
+      background: none;
+      border: 0;
+      color: #fff;
+      font-size: 26px;
+      line-height: 1;
+      cursor: pointer;
+      transition: rotate 0.3s, scale 0.3s;
+    }
+.section-1 .bar button:hover{
+      rotate: 90deg;
+      scale: 1.2;
+    }
+@media (max-width: 1100px){.section-1 .bar button{
+        right: 14px;
+      }
+.section-1 .bar{
+        font-size: 12px;
+        padding: 0 40px;
+        text-align: center;
+      }
+}
+@media (prefers-reduced-motion: reduce){.section-1 *{
+        animation: none !important;
+        transition: none !important;
+      }
+}

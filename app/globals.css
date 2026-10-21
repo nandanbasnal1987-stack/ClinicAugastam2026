@@ -1,0 +1,4 @@
+/* Page-level base shared by every section */
+html{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light dark;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0}
+.merged-section{display:flow-root}

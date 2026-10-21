@@ -1,0 +1,180 @@
+.section-1 .nav{
+      position: sticky;
+      top: env(safe-area-inset-top, 0px);
+      z-index: 50;
+      height: 71px;
+      background: var(--nav);
+      display: flex;
+      align-items: center;
+      padding: 0 86px 0 74px;
+      border-bottom: 1px solid var(--bd);
+      transition: box-shadow 0.3s;
+    }
+.section-1 .nav.sh{
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+.section-1 .logo{
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      flex: none;
+    }
+.section-1 .logo svg{
+      width: 26px;
+      height: 30px;
+    }
+.section-1 .logo b{
+      display: block;
+      font: 700 22px Poppins, sans-serif;
+      color: #0a6fc2;
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+.section-1 .logo small{
+      display: block;
+      font: italic 500 8.5px Poppins, sans-serif;
+      color: var(--nav-ink);
+      margin-top: 4px;
+      letter-spacing: 0.2px;
+    }
+.section-1 .menu{
+      display: flex;
+      gap: 30px;
+      margin: 0 auto;
+      padding: 0 0 0 20px;
+      list-style: none;
+    }
+.section-1 .menu > li{
+      position: relative;
+    }
+.section-1 .menu > li > a{
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      height: 71px;
+      color: var(--nav-ink);
+      font-weight: 700;
+      font-size: 17px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.25s;
+    }
+.section-1 .menu > li:hover > a{
+      color: var(--blue);
+    }
+.section-1 .menu svg{
+      width: 14px;
+      transition: rotate 0.3s;
+    }
+.section-1 .menu > li:hover svg{
+      rotate: 180deg;
+    }
+.section-1 .dd{
+      position: absolute;
+      top: 66px;
+      left: -14px;
+      min-width: 210px;
+      background: var(--nav);
+      border: 1px solid var(--bd);
+      border-radius: 12px;
+      padding: 8px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+      opacity: 0;
+      visibility: hidden;
+      translate: 0 8px;
+      transition: opacity 0.25s, translate 0.25s, visibility 0s 0.25s;
+    }
+.section-1 .menu > li:hover .dd, .section-1 .menu > li:focus-within .dd{
+      opacity: 1;
+      visibility: visible;
+      translate: 0 0;
+      transition: opacity 0.25s, translate 0.25s;
+    }
+.section-1 .dd a{
+      display: block;
+      padding: 10px 12px;
+      border-radius: 8px;
+      color: var(--nav-ink);
+      font-size: 15px;
+      text-decoration: none;
+      transition: background 0.2s, padding 0.2s, color 0.2s;
+    }
+.section-1 .dd a:hover{
+      background: rgba(0, 116, 192, 0.1);
+      color: var(--blue);
+      padding-left: 18px;
+    }
+.section-1 .cta{
+      display: flex;
+      gap: 25px;
+      flex: none;
+    }
+.section-1 .login{
+      height: 42px;
+      padding: 0 22px;
+      background: none;
+      border: 1px solid var(--blue);
+      border-radius: 4px;
+      color: var(--blue);
+      font: 700 16px Arial;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s;
+    }
+.section-1 .login:hover{
+      background: var(--blue);
+      color: #fff;
+    }
+.section-1 .demo{
+      height: 40px;
+      padding: 0 22px;
+      background: var(--blue);
+      border: 0;
+      border-radius: 4px;
+      color: #fff;
+      font: 16px Arial;
+      cursor: pointer;
+      margin-top: 2px;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+.section-1 .demo:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 116, 192, 0.4);
+    }
+.section-1 .burger{
+      display: none;
+      margin-left: auto;
+      background: none;
+      border: 0;
+      font-size: 28px;
+      color: var(--nav-ink);
+      cursor: pointer;
+    }
+@media (max-width: 1100px){.section-1 .menu, .section-1 .cta{
+        display: none;
+      }
+.section-1 .burger{
+        display: block;
+      }
+.section-1 .nav{
+        padding: 0 20px;
+      }
+.section-1 .nav.open .menu{
+        display: flex;
+        position: absolute;
+        top: 71px;
+        left: 0;
+        right: 0;
+        background: var(--nav);
+        flex-direction: column;
+        gap: 0;
+        padding: 8px 20px 16px;
+        border-bottom: 1px solid var(--bd);
+      }
+.section-1 .nav.open .menu > li > a{
+        height: 48px;
+      }
+.section-1 .nav.open .dd{
+        display: none;
+      }
+}

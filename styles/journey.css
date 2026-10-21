@@ -1,0 +1,71 @@
+#section-4{
+  --bg:#f4f8fc; --ink:#0a1228; --soft:#2b3550; --chip:#e3eef2; --line:#e3eaf3; --node:#0072bc; --node2:#0a86d8; --dash:#8a9099; --sh:rgba(0,114,188,.45);
+  box-sizing:border-box;
+   
+}
+@media (prefers-color-scheme:dark){html:not([data-theme="light"]) #section-4{--bg:#0c1320;--ink:#eef3fb;--soft:#aebbd0;--chip:#1a2a38;--line:#18233a;--dash:#6d788d;--sh:rgba(80,160,255,.4);color-scheme:dark}
+}
+html[data-theme="dark"] #section-4{--bg:#0c1320;--ink:#eef3fb;--soft:#aebbd0;--chip:#1a2a38;--line:#18233a;--dash:#6d788d;--sh:rgba(80,160,255,.4);color-scheme:dark;color-scheme:dark}
+html[data-theme="dark"] #section-4{--bg:#0c1320;--ink:#eef3fb;--soft:#aebbd0;--chip:#1a2a38;--line:#18233a;--dash:#6d788d;--sh:rgba(80,160,255,.4);color-scheme:dark}
+#section-4 *, #section-4 *::before, #section-4 *::after{box-sizing:inherit}
+#section-4{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:Poppins,system-ui,sans-serif;overflow-x:clip}
+#section-4 :focus-visible{outline:2px solid var(--node);outline-offset:4px;border-radius:12px}
+#section-4 .page{position:relative;padding:20px 24px 20px;
+  background:linear-gradient(var(--line),var(--line)) 25.5% 0/1px 100% no-repeat,
+             linear-gradient(var(--line),var(--line)) 50% 0/1px 100% no-repeat,
+             linear-gradient(var(--line),var(--line)) 74.5% 0/1px 100% no-repeat}
+#section-4 .head{text-align:center;max-width:1100px;margin:0 auto}
+#section-4 .chip{display:inline-block;background:var(--chip);border-radius:999px;padding:11px 14px;font:600 11.5px/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+#section-4 h1{margin:34px 0 0;font:400 clamp(32px,5.2vw,68px)/1.15 Inter,Arial,sans-serif;letter-spacing:-.015em}
+#section-4 .sub{margin:40px auto 0;max-width:830px;font-size:clamp(15px,1.6vw,18px);line-height:1.55;letter-spacing:.03em}
+#section-4 .track{position:relative;container-type:inline-size;max-width:1416px;margin:78px auto 0;aspect-ratio:1416/340}
+#section-4 svg.path{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+#section-4 svg.path path{fill:none;stroke:var(--dash);stroke-width:2;stroke-dasharray:6 6;stroke-linecap:round}
+#section-4 .pt{position:absolute;left:calc(var(--x)/1416*100%);top:calc(var(--y)/340*100%);transform:translate(-50%,-50%)}
+#section-4 .step{display:flex;flex-direction:column;align-items:center;text-align:center;opacity:0;scale:.6;transition:opacity .5s,scale .6s cubic-bezier(.3,1.6,.5,1);cursor:pointer;outline:0}
+#section-4 .step.on, #section-4 .end.on{opacity:1;scale:1}
+#section-4 .n{width:clamp(44px,4.5cqw,64px);aspect-ratio:1;border-radius:28%;display:grid;place-items:center;color:#fff;
+  font:700 clamp(12px,1.13cqw,16px) Inter,sans-serif;background:linear-gradient(145deg,var(--node2),var(--node));
+  transition:transform .35s cubic-bezier(.3,1.6,.5,1),box-shadow .35s}
+#section-4 .step:hover .n, #section-4 .step:focus-visible .n, #section-4 .step.act .n{transform:translateY(-8px) rotate(-4deg) scale(1.1);box-shadow:0 18px 28px -10px var(--sh)}
+#section-4 .step.act .n::after{content:"";position:absolute;inset:0;border-radius:28%;border:2px solid var(--node);animation:sec4-ring 1.6s ease-out infinite}
+#section-4 .n{position:relative}
+@keyframes sec4-ring{from{transform:scale(1);opacity:.8}
+to{transform:scale(1.5);opacity:0}
+}
+#section-4 .step h3{margin:clamp(6px,.8cqw,12px) 0 0;font:500 clamp(13px,1.13cqw,16px)/1.2 Inter,sans-serif;white-space:nowrap}
+#section-4 .step p{margin:clamp(4px,.5cqw,7px) 0 0;width:clamp(110px,10.5cqw,150px);font:400 clamp(9px,.74cqw,10.5px)/1.7 Inter,sans-serif;color:var(--soft)}
+#section-4 .start{width:clamp(34px,3.2cqw,46px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font:700 clamp(7px,.62cqw,9px) Inter,sans-serif;letter-spacing:.08em;color:#0d4a2c;
+  background:radial-gradient(circle at 35% 30%,#c9f5d9,#58c985);box-shadow:0 4px 10px -3px rgba(40,140,80,.5);animation:sec4-beat 2.4s ease-in-out infinite}
+@keyframes sec4-beat{50%{box-shadow:0 0 0 10px rgba(88,201,133,.18)}
+}
+#section-4 .end{opacity:0;transition:opacity .6s}
+#section-4 .flag{width:clamp(36px,3.8cqw,54px);height:auto;overflow:visible}
+#section-4 .flag .cloth{transform-origin:20px 14px;animation:sec4-wave 1.8s ease-in-out infinite}
+@keyframes sec4-wave{50%{transform:skewY(-6deg) scaleX(.9)}
+}
+#section-4 #sec4-replay{display:none;margin:36px auto 0;font:500 14px Inter,sans-serif;color:var(--node);background:none;border:1px solid var(--node);border-radius:999px;padding:9px 18px;cursor:pointer;transition:background .25s,color .25s}
+#section-4 #sec4-replay:hover{background:var(--node);color:#fff}
+#section-4 #sec4-theme{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));font:500 13px Inter,sans-serif;background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:9px 14px;cursor:pointer;opacity:.85}
+/* vertical timeline for narrower screens */
+@media (max-width:1000px){#section-4 .page{padding:72px 20px 96px}
+#section-4 .track{aspect-ratio:auto;container-type:normal;display:flex;flex-direction:column;gap:28px;margin-top:48px;max-width:420px;padding-left:8px}
+#section-4 .track::before{content:"";position:absolute;left:30px;top:20px;bottom:20px;border-left:2px dashed var(--dash)}
+#section-4 svg.path{display:none}
+#section-4 .pt{position:relative;left:auto;top:auto;transform:none;--x:0}
+#section-4 .step{flex-direction:row;align-items:center;text-align:left;gap:16px}
+#section-4 .n{width:46px;font-size:15px;flex:none}
+#section-4 .step h3{margin:0;font-size:17px}
+#section-4 .step p{margin:4px 0 0;width:auto;font-size:13px}
+#section-4 .start{width:44px;font-size:8px}
+#section-4 .flag{width:44px}
+#section-4 .end{padding-left:0}
+#section-4 .pt.s, #section-4 .pt.f{order:0}
+#section-4 .pt.s{order:-1}
+#section-4 .pt.f{order:9}
+#section-4 .step>div{max-width:300px}
+#section-4 .step:hover .n, #section-4 .step.act .n{transform:translateX(6px) scale(1.08)}
+}
+@media (prefers-reduced-motion:reduce){#section-4 *, #section-4 *::before, #section-4 *::after{animation:none!important;transition:none!important}
+#section-4 .step, #section-4 .end{opacity:1;scale:1}
+}
